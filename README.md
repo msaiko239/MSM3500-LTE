@@ -7,3 +7,6 @@ Prerequisites
   PHP 7.X or higher
   Python3
   Asterisk Pyst2
+
+Copy the contents of var/www/html to the root of your web server.
+Copy the images folder to the rot of your web server.
