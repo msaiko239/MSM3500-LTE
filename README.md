@@ -4,13 +4,13 @@ This system is built to integrate Ubuntu to Druid EPC for integtration to text m
 
 Prerequisites
 
-  Asterisk Version 14 or higher
+      Asterisk Version 14 or higher
   
-  PHP 7.X or higher
+      PHP 7.X or higher
   
-  Python3
+      Python3
   
-  Asterisk Pyst2
+      Asterisk Pyst2
 
 Copy the contents of var/www/html to the root of your web server.
 
