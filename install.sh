@@ -1,5 +1,9 @@
 #!/bin/sh
 
+apt-get install python3.6
+pip3 install pyst2
+apt-get install php libapache2-mod-php php-mcrypt php-mysql
+
 cp *.php /var/www/html/
 cp *.ini /var/www/html/
 
