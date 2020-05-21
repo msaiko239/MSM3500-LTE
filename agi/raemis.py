@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import re
-from time import sleep
 import logging
 import logging.handlers
 from configparser import ConfigParser
@@ -11,6 +10,7 @@ import asterisk.agi
 from asterisk.agi import *
 import os
 import sys
+import requests
 
 config = ConfigParser()
 config.read('/var/www/html/configraemis.ini')
@@ -38,9 +38,6 @@ agi = AGI()
 pin = agi.env['agi_extension']
 msg = agi.env['agi_calleridname']
 frm = agi.env['agi_callerid']
-
-# importing the requests library
-import requests
 
 # defining the api-endpoint
 API_ENDPOINT = "http://raemis:password@" + HOST + "/api/smsc_message?id=1"
