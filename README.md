@@ -22,6 +22,7 @@ To test the integration to your server navigate to http://<your server ip>/confi
 Enter the IP of your Druid Raemis server and hit update ini.
 
 from the cli of your server enter the command
+
     python3 /var/lib/asterisk/agi-bin/test_raemis.py '<phone-you-want-to-send-to>' '<Message-Text>' 'from-number' '0'
     
     
