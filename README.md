@@ -17,7 +17,7 @@ run the install.sh file
 This should copy all the contents of the repo to your local server and create all directorys and change permissions needed.
 
 # Testing Integration
-To test the integration to your server navigate to http://<your server ip>/configraemis.php
+To test the integration to your server navigate to http://"your server ip"/configraemis.php
 
 Enter the IP of your Druid Raemis server and hit update ini.
 
