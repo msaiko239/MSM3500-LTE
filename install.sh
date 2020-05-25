@@ -18,3 +18,5 @@ chmod 777 /var/lib/asterisk/agi-bin/*.py
 mkdir /var/log/axi
 cp axi/input.csv /var/log/axi/
 chmod 777 /var/log/axi/input.csv
+
+echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
