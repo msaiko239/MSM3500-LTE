@@ -18,6 +18,8 @@ Install Asterisk - https://wiki.asterisk.org/wiki/display/AST/Installing+Asteris
     git clone https://github.com/msaiko239/MSM3500-LTE.git
 
     cd MSM3500-LTE
+    
+    sudo chmod 777 install.sh
 
     sudo ./install.sh
 
