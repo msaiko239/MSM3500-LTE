@@ -45,7 +45,7 @@ if($_POST){
  </head>
 <body>
 <br>
- <?php echo '<img src="images/raemisip.jpg"./'; ?> 
+ <?php echo '<img src="images/Raemisip.jpg"./'; ?> 
 </br>
 <br>
 <?php 
