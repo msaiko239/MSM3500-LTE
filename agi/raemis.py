@@ -54,6 +54,6 @@ r = requests.post(url = API_ENDPOINT, data = data)
 # extracting response text
 #pastebin_url = r.text
 if '200' in str(r.status_code):
-    LOGGER.info('Page Accepted By Raemis')
+    LOGGER.info('%s Page Accepted By Raemis', data)
 else:
-   LOGGER.info('Page Not Accepted By Raemis')
+   LOGGER.info('%s Page Not Accepted By Raemis', data)
