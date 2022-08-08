@@ -30,13 +30,17 @@ You should add "extension=mcrypt.so" to php.ini
 Enable extension in php.ini file.
 
   `sudo vim /etc/php/7.4/cli/php.ini
+  
   extension=mcrypt.so
+  
   sudo vim /etc/php/7.4/apache2/php.ini
+  
   extension=mcrypt.so`
 
 You can confirm that the module was installed and enabled with the command:
 
  ` php -m | grep mcrypt`
+ 
   output : mcrypt
 
 # Installation 
