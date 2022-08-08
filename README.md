@@ -29,12 +29,12 @@ configuration option "php_ini" is not set to php.ini location
 You should add "extension=mcrypt.so" to php.ini
 Enable extension in php.ini file.
 
- `sudo vim /etc/php/7.4/cli/php.ini
+ ```sudo vim /etc/php/7.4/cli/php.ini
   extension=mcrypt.so
   
   sudo vim /etc/php/7.4/apache2/php.ini
   
-  extension=mcrypt.so`
+  extension=mcrypt.so```
 
 You can confirm that the module was installed and enabled with the command:
 
