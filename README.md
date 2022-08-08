@@ -6,10 +6,10 @@ This system is built to integrate Ubuntu to Druid EPC for integtration to text m
 
   Asterisk Version 14 or higher
   
-php mcrypt
+php 
 You’ll need to first install PHP, dev and pear extensions on Ubuntu 20.04 by using following command.
 
-  `sudo apt install php php-pear php-dev libmcrypt-dev`
+  `sudo apt install php libapache2-mod-php php-pear php-dev libmcrypt-dev php-mysql `
   
 Confirm pecl command is available in your system.
 
