@@ -8,11 +8,17 @@ This system is built to integrate Ubuntu to Druid EPC for integtration to text m
   
 php mcrypt
 You’ll need to first install PHP, dev and pear extensions on Ubuntu 20.04 by using following command.
+
   `sudo apt install php php-pear php-dev libmcrypt-dev`
+  
 Confirm pecl command is available in your system.
+
   `which pecl`
+  
 You can the install mcrypt extension using pecl command with install option.
+
   `sudo pecl install mcrypt`
+  
 You should get an output like below for completed installation of mcrypt extension on Ubuntu 20.04 Linux machine.
 Build process completed successfully
 
