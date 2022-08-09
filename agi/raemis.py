@@ -3,7 +3,7 @@
 import re
 import logging
 import logging.handlers
-from configparser import ConfigParser
+import configparser
 import sys
 import asterisk
 import asterisk.agi
@@ -12,8 +12,8 @@ import os
 import sys
 import requests
 
-config = ConfigParser()
-config.read('/var/www/html/configraemis.ini')
+config = configparser.ConfigParser()
+config.read('/var/www/html/config.ini')
 LOG_LEVEL = logging.info('LOGGING', 'level')
 
 # Initialize logging
@@ -32,7 +32,7 @@ if LOG_LEVEL == 'DEBUG':
     log_console.formatter(formatter)
     LOGGER.addHandler(log_console)
 
-HOST = config.get('Raemis_EPC_System', 'IP')
+HOST = config['Raemis_EPC_System']['IP']
 agi = AGI()
 
 pin = agi.env['agi_extension']
