@@ -1,8 +1,9 @@
 #!/bin/sh
 
-apt-get install python3.6
-pip3 install pyst2
-apt-get install php libapache2-mod-php php-mcrypt php-mysql
+apt-get -y install python3.10
+sudo apt-get -y install python3-pip
+pip3 install --upgrade --force-reinstall pyst2
+
 
 cp *.php /var/www/html/
 cp *.ini /var/www/html/
