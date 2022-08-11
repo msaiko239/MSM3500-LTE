@@ -5,40 +5,6 @@ This system is built to integrate Ubuntu to Druid EPC for integtration to text m
 # Prerequisites
 
   Asterisk Version 14 or higher
-  
-php 
-You’ll need to first install PHP, dev and pear extensions on Ubuntu 20.04 by using following command.
-
-  `sudo apt install php libapache2-mod-php php-pear php-dev libmcrypt-dev php-mysql `
-  
-Confirm pecl command is available in your system.
-
-  `which pecl`
-  
-You can the install mcrypt extension using pecl command with install option.
-
-  `sudo pecl install mcrypt`
-  
-You should get an output like below for completed installation of mcrypt extension on Ubuntu 20.04 Linux machine.
-Build process completed successfully
-
-`Installing '/usr/lib/php/20190902/mcrypt.so'`
-`install ok: channel://pecl.php.net/mcrypt-1.0.3`
-
-configuration option "php_ini" is not set to php.ini location
-You should add "extension=mcrypt.so" to php.ini
-Enable extension in php.ini file.
-
-  `sudo vim /etc/php/7.4/cli/php.ini
-  extension=mcrypt.so`
-  `sudo vim /etc/php/7.4/apache2/php.ini
-  extension=mcrypt.so`
-
-You can confirm that the module was installed and enabled with the command:
-
- ` php -m | grep mcrypt`
- 
-  output : mcrypt
 
 # Installation 
 
@@ -60,6 +26,17 @@ Install Asterisk - https://wiki.asterisk.org/wiki/display/AST/Installing+Asteris
 This will download Python Version 3.6 if you would like a newer version please edit the install.sh file accordingly
 
 This will install php and all necessary requirements. 
+
+configuration option "php_ini" is not set to php.ini location
+You should add "extension=mcrypt.so" to php.ini
+Enable extension in php.ini file.
+
+````
+sudo nano /etc/php/7.4/cli/php.ini
+extension=mcrypt.so
+sudo nano /etc/php/7.4/apache2/php.ini
+extension=mcrypt.so
+````
 
 This will copy all the contents of the repo to your local server and create all directorys and change permissions needed.
 
