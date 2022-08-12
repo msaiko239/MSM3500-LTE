@@ -2,18 +2,17 @@
 Multi System Messaging build for LTE Integration to Druid EPC
 This system is built to integrate Ubuntu to Druid EPC for integtration to text messaging to an LTE device. The system uses asterisk agi to convert the incomming SIP message to an HTTP request to Druid which then send the message to your User Device. 
 
+This program utilizes Asterisk for communication and application function, understanding of Asterisk is required for configuration.
+
 # Prerequisites
 
-  Asterisk Version 14 or higher
+Ubuntu 20.04 or better LTS server
+4GB RAM | 100GB HD | 2 CPU
 
 # Installation 
 
-This document assumes you have knowledge of install the prerequsites.
-
-Install Asterisk - https://wiki.asterisk.org/wiki/display/AST/Installing+Asterisk
-  Please see installing Asterisk from source or any other installtion you would like.
-
     sudo apt-get update
+    sudo apt upgrade
     
     git clone https://github.com/msaiko239/MSM3500-LTE.git
 
@@ -23,20 +22,9 @@ Install Asterisk - https://wiki.asterisk.org/wiki/display/AST/Installing+Asteris
 
     sudo ./install.sh
 
-This will download Python Version 3.6 if you would like a newer version please edit the install.sh file accordingly
+This will download Python Version 3 if you would like a different version please edit the install.sh file accordingly
 
 This will install php and all necessary requirements. 
-
-configuration option "php_ini" is not set to php.ini location
-You should add "extension=mcrypt.so" to php.ini
-Enable extension in php.ini file.
-
-````
-sudo nano /etc/php/7.4/cli/php.ini
-extension=mcrypt.so
-sudo nano /etc/php/7.4/apache2/php.ini
-extension=mcrypt.so
-````
 
 This will copy all the contents of the repo to your local server and create all directorys and change permissions needed.
 
