@@ -31,7 +31,7 @@ sudo apt install -y php libapache2-mod-php php-pear php-dev libmcrypt-dev php-my
 sudo pecl install mcrypt -y
 
 cd
-cd MSM3500-LTE
+cd /tmp/MSM3500-LTE
 
 sudo cp *.php /var/www/html/
 sudo cp *.ini /var/www/html/
