@@ -52,5 +52,6 @@ sudo chmod 777 /var/log/axi/input.csv
 sudo cp -fr asterisk/pjsip.conf /etc/asterisk/pjsip.conf
 sudo cp -fr asterisk/extensions.conf /etc/asterisk/extensions.conf
 sudo cp -fr usr/local/lib/python3.8/dist-packages/asterisk/agi.py /usr/local/lib/python3.8/dist-packages/asterisk/agi.py
+sudo asterisk -rx 'reload'
 
 sudo echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
