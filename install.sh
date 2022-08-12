@@ -24,7 +24,7 @@ sudo systemctl enable asterisk
 sudo systemctl start asterisk
 
 sudo apt-get -y install python3.10
-sudo apt-get -y install python3-pip3
+sudo apt-get -y install python3-pip
 sudo pip3 install pyst3
 
 sudo apt install -y php libapache2-mod-php php-pear php-dev libmcrypt-dev php-mysql
