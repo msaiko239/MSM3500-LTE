@@ -1,25 +1,52 @@
 #!/bin/sh
+set -x
 
-apt-get -y install python3.10
-sudo apt-get -y install python3-pip
+sudo wget https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz
+sudo cp asterisk-18-current.tar.gz /usr/local/src/asterisk-18-current.tar.gz
+cd /usr/local/src/
+sudo tar zxvf asterisk-18-current.tar.gz
+sudo rm asterisk-18-current.tar.gz
+cd asteri*
+cd contrib/scripts/
+sudo ./install_prereq install
+sudo ./install_prereq install-unpackaged
+cd ..
+echo
+cd ..
+sudo ./configure
+sudo make menuselect.makeopts
+sudo make
+sudo make install
+sudo make samples
+sudo make config
+sudo make install-logrotate
+sudo systemctl enable asterisk
+sudo systemctl start asterisk
+
+sudo apt-get -y install python3.10
+sudo apt-get -y install python3-pip3
 sudo pip3 install pyst3
 
 sudo apt install -y php libapache2-mod-php php-pear php-dev libmcrypt-dev php-mysql
 sudo pecl install mcrypt -y
 
-cp *.php /var/www/html/
-cp *.ini /var/www/html/
+cd
+cd MSM3500-LTE
 
-chmod 777 /var/www/html/*
+sudo cp *.php /var/www/html/
+sudo cp *.ini /var/www/html/
+sudo rm /var/www/html/index.html
 
-mkdir /var/www/html/images
-cp images/* /var/www/html/images/
+sudo chmod 777 /var/www/html/*
 
-cp agi/*.py /var/lib/asterisk/agi-bin/
-chmod 777 /var/lib/asterisk/agi-bin/*.py
+sudo mkdir /var/www/html/images
+sudo cp images/* /var/www/html/images/
 
-mkdir /var/log/axi
-cp axi/input.csv /var/log/axi/
-chmod 777 /var/log/axi/input.csv
+sudo cp agi/*.py /var/lib/asterisk/agi-bin/
+sudo chmod 777 /var/lib/asterisk/agi-bin/*.py
 
-echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
+sudo mkdir /var/log/axi
+sudo cp axi/input.csv /var/log/axi/
+sudo chmod 777 /var/log/axi/input.csv
+
+sudo echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
