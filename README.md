@@ -15,9 +15,9 @@ Ubuntu 20.04 or better LTS server
     
     sudo apt upgrade
     
-    git clone https://github.com/msaiko239/MSM3500-LTE.git
+    git clone https://github.com/msaiko239/MSM3500-LTE.git /tmp/
 
-    cd MSM3500-LTE
+    cd /tmp/MSM3500-LTE
     
     sudo chmod 777 install.sh
 
