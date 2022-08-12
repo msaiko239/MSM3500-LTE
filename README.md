@@ -12,6 +12,7 @@ Ubuntu 20.04 or better LTS server
 # Installation 
 
     sudo apt-get update
+    
     sudo apt upgrade
     
     git clone https://github.com/msaiko239/MSM3500-LTE.git
@@ -27,6 +28,10 @@ This will download Python Version 3 if you would like a different version please
 This will install php and all necessary requirements. 
 
 This will copy all the contents of the repo to your local server and create all directorys and change permissions needed.
+
+During installation an Asterisk user 8888 with password 8888 is created for testing, you can use any softphone to test registration. A Trunk for the Nursecall system is also created and you will want to edit the file /etc/asterisk/pjsip.conf to match your needs.
+
+Dial rules are also created in /etc/asterisk/extensions.conf for testing. From a softphone you can dial 7777 to test that the agi module and script are working properly. Nursecall dial plans are also created and may need to be adjusted to fit your current needs. 
 
 # Testing Integration
 To test the integration to your server navigate to http://"your server ip"/config.php
