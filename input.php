@@ -51,7 +51,7 @@ if (($handle = fopen("/var/log/axi/input.csv", "r")) !== FALSE) {
 <a href="index.php">Home</a>
 </br>
 <br>
- Message Server Rev 1.0
+ Message Server Rev 1.1
 </br>
 </body>
 </html>
