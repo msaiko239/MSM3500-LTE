@@ -4,12 +4,15 @@
  </head>
  <body>
 <br>
- <?php echo '<img src="images/MSMWelcome.jpg"./'; ?> 
+ <?php echo '<img src="images/MSMWelcome.jpg"./'; ?>
 </br>
 <br>
 </br>
 <br>
 <a href="config.php">Configure Interface</a>
+</br>
+<br>
+<a href="sendpage.php">Manual Page</a>
 </br>
 <br>
 <a href="status.php">MSM Service Status</a>
@@ -22,7 +25,7 @@
 </br>
 <br>
   <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
-            Message Server Rev 1.0
+            Message Server Rev 1.1
   </div>
 </br>
  </body>
