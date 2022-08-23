@@ -29,7 +29,7 @@ if (strpos($output, $needle) !==false) {
 <a href="index.php">Home</a>
 <br>
   <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
-            Message Server Rev 1.0
+            Message Server Rev 1.1
   </div>
 </br>
 </body>
