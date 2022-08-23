@@ -12,7 +12,7 @@
 <a href="config.php">Configure Interface</a>
 </br>
 <br>
-<a href="sendpage.php">Manual Page</a>
+<a href="sendpage.php">Manual Page to Staff</a>
 </br>
 <br>
 <a href="status.php">MSM Service Status</a>
