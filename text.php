@@ -54,7 +54,7 @@ padding: 2px 20px 2px 20px;
     background-color: #FFFFFF;
     width:580px;
     height:380px;
-    padding: 2px 350px 2px 2px;
+    padding: 2px 150px 2px 2px;
 }
 .formfield * {
   vertical-align: top;
@@ -65,6 +65,9 @@ padding: 16px 0px 0px 10px;
 }
 .form {
 padding: 0px 0px 0px 10px;
+}
+.stat {
+    position: absolute;
 }
 </style>
 </head>
@@ -80,42 +83,28 @@ padding: 0px 0px 0px 10px;
 </div>
 
 <div class="banner">
-<img src="images/sendmsg.jpg">
+<img src="images/srvlog.jpg">
 </div>
 <br>
 </br>
-<div>
-<img src="images/int.png" class="img">
-</div>
-<br>
-<form name="myform" method="POST" action="text.php" class="form">
-    <p class="formfield">
-    <label>Message:</label>
-    <textarea type='textarea' id='msg' name='msg'></textarea>
-    </p>
-    <label>Staff Member:</label>
-    <select name='msisdn' value='test' style='width: 200px;'>
-    <option value="" disabled selected>Select Staff Ext</option>
-        <?php
-        ini_set("display_errors",1);
-        error_reporting(E_ALL);
-        $obj = file_get_contents('http://raemis:password@192.168.100.2/api/subscriber');
-        $colm = (array_column(json_decode($obj), 'msisdn'));
-
-        foreach($colm as $item){
-                echo "<option id='val' name='val' value='$item'>$item</option>";
-                echo "<br>";
-            }
-        ?>
-    </select>
-<br>
-</br>
-    <input type='image' name 'submit' src='images/hNfHB.png' alt='Submit' style='width: 200px;'></input>
+<div class="form">
 <?php
-$msg = 'msg';
-$msisdn = 'msisdn';
-echo shell_exec("python3 /var/www/html/manpage.py '$msisdn' '$msg' '8888' '0'"); ?>
-</form>
+$msg = $_POST['msg'];
+$msisdn = $_POST['msisdn'];
+$cmd = escapeshellcmd("sudo python3 /var/www/html/manpage.py '$msisdn' '$msg' '9999' '0'");
+$output = shell_exec($cmd);
+echo 'Your message - ' . $msg . ' was sent to user - ' . $msisdn;
+//echo $msisdn;
+//echo $cmd;
+//echo $output
+?>
+</div>
+<br></br>
+<div class="form">
+    <button onclick="window.location.href='sendpage.php';">
+      Click to go Back
+    </button>
+</div>
 <br></br>
 
   <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">

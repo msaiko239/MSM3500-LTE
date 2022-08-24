@@ -4,15 +4,122 @@
  </head>
 <body>
 <br>
- <?php echo '<img src="images/commlog.jpg"./'; ?> 
+ <?php echo '<img src="images/srvlog.jpg"./'; ?>
 </br>
+<?php
+
+$output = shell_exec('sudo journalctl -u asterisk.service -n10');
+echo "<pre>$output</pre>";
+?>
+<br>
+</br>
+<br>
+<a href="index.php">Home</a>
+<br>
+  <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
+            Message Server Rev 1.0
+  </div>
+</br>
+</body>
+</html>
+pcsadmin@msm3500:/var/www/html$ cat input.php
+<html>
+ <head>
+  <title>Message Server</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #6495ED;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #6495ED;
+  color: white;
+}
+
+.box {
+   display: flex;
+   align-items:center;
+}
+.padding2
+{
+width:80px;
+height:50px;
+padding: 2px 20px 2px 20px;
+}
+.padding
+{
+width:80px;
+height:80px;
+padding: 2px 20px 2px 20px;
+}
+.img
+{
+    float: right;
+    background-color: #FFFFFF;
+    width:580px;
+    height:380px;
+    padding: 2px 150px 2px 2px;
+}
+.formfield * {
+  vertical-align: top;
+
+}
+.banner {
+padding: 16px 0px 0px 10px;
+}
+.form {
+padding: 0px 0px 0px 10px;
+}
+.stat {
+    position: absolute;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="index.php">Home</a>
+  <a href="config.php">Configure Interface</a>
+  <a href="sendpage.php">Message Staff</a>
+  <a href="status.php">Service Status</a>
+  <a class="active" href="input.php">Log</a>
+  <a href="service.php">Shell output</a>
+</div>
+
+<div class="banner">
+<img src="images/commlog.jpg">
+</div>
+<br>
+</br>
+<div class="form">
 <?php
 
 $row = 1;
 if (($handle = fopen("/var/log/axi/input.csv", "r")) !== FALSE) {
-    
+
     echo '<table border="1">';
-    
+
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         if ($row == 1) {
@@ -20,7 +127,7 @@ if (($handle = fopen("/var/log/axi/input.csv", "r")) !== FALSE) {
         }else{
             echo '<tr>';
         }
-        
+
         for ($c=0; $c < $num; $c++) {
             //echo $data[$c] . "<br />\n";
             if(empty($data[$c])) {
@@ -34,7 +141,7 @@ if (($handle = fopen("/var/log/axi/input.csv", "r")) !== FALSE) {
                 echo '<td>'.$value.'</td>';
             }
         }
-        
+
         if ($row == 1) {
             echo '</tr></thead><tbody>';
         }else{
@@ -42,16 +149,17 @@ if (($handle = fopen("/var/log/axi/input.csv", "r")) !== FALSE) {
         }
         $row++;
     }
-    
+
     echo '</tbody></table>';
     fclose($handle);
 }
 ?>
-<br>
-<a href="index.php">Home</a>
+</div>
+<br></br>
+
+  <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
+            Message Server Rev 1.2
+  </div>
 </br>
-<br>
- Message Server Rev 1.1
-</br>
-</body>
+ </body>
 </html>
