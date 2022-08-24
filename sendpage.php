@@ -111,10 +111,6 @@ padding: 0px 0px 0px 10px;
 <br>
 </br>
     <input type='image' name 'submit' src='images/hNfHB.png' alt='Submit' style='width: 200px;'></input>
-<?php
-$msg = 'msg';
-$msisdn = 'msisdn';
-echo shell_exec("python3 /var/www/html/manpage.py '$msisdn' '$msg' '8888' '0'"); ?>
 </form>
 <br></br>
 
