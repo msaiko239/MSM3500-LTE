@@ -87,6 +87,15 @@ padding: 0px 0px 0px 10px;
 <div>
 <img src="images/int.png" class="img">
 </div>
+<?php
+$filepath = 'config.ini';
+$parsed_ini = parse_ini_file($filepath, true);
+    foreach($parsed_ini as $section=>$values){
+        foreach($values as $key=>$value){
+        }
+    }
+$ip = $value;
+?>
 <br>
 <form name="myform" method="POST" action="text.php" class="form">
     <p class="formfield">
@@ -99,7 +108,7 @@ padding: 0px 0px 0px 10px;
         <?php
         ini_set("display_errors",1);
         error_reporting(E_ALL);
-        $obj = file_get_contents('http://raemis:password@192.168.100.2/api/subscriber');
+        $obj = file_get_contents('http://raemis:password@'. $ip . '/api/subscriber');
         $colm = (array_column(json_decode($obj), 'msisdn'));
 
         foreach($colm as $item){
