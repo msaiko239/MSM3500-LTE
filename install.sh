@@ -34,6 +34,7 @@ cd
 cd /tmp/MSM3500-LTE
 
 sudo cp *.php /var/www/html/
+sudo cp *.py /var/www/html/
 sudo cp *.ini /var/www/html/
 sudo rm /var/www/html/index.html
 
