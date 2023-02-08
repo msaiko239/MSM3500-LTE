@@ -40,7 +40,7 @@ msg = agi.env['agi_calleridname']
 frm = agi.env['agi_callerid']
 
 # defining the api-endpoint
-API_ENDPOINT = "http://raemis:password@" + HOST + "/api/smsc_message?id=1"
+API_ENDPOINT = "https://raemis:password@" + HOST + "/api/smsc_message?id=1"
 
 # data to be sent to api
 data = {'to_msisdn':pin,
