@@ -106,9 +106,16 @@ $ip = $value;
     <select name='msisdn' value='test' style='width: 200px;'>
     <option value="" disabled selected>Select Staff Ext</option>
         <?php
+        $arrContextOptions=array(
+            "ssl"=>array(
+                "allow_self_signed"=> true,
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
         ini_set("display_errors",1);
         error_reporting(E_ALL);
-        $obj = file_get_contents('http://raemis:password@'. $ip . '/api/subscriber');
+        $obj = file_get_contents('https://raemis:password@'. $ip . '/api/subscriber', false, stream_context_create($arrContextOptions));
         $colm = (array_column(json_decode($obj), 'msisdn'));
 
         foreach($colm as $item){
