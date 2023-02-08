@@ -9,7 +9,7 @@ config.read('/var/www/html/config.ini')
 HOST = config.get('Raemis_EPC_System', 'IP')
 
 # defining the api-endpoint
-API_ENDPOINT = "http://raemis:password@" + HOST + "/api/smsc_message?id=1"
+API_ENDPOINT = "https://raemis:password@" + HOST + "/api/smsc_message?id=1"
 
 # data to be sent to api
 data = {'to_msisdn':(sys.argv[1]),
@@ -19,7 +19,7 @@ data = {'to_msisdn':(sys.argv[1]),
         'msg_type':(sys.argv[4])}
 
 # sending post request and saving response as response object
-r = requests.post(url = API_ENDPOINT, data = data)
+r = requests.post(url = API_ENDPOINT, data = data, verify=False)
 
 # extracting response text
 pastebin_url = r.text
