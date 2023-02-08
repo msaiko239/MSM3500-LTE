@@ -49,7 +49,7 @@ data = {'to_msisdn':pin,
         'msg_lifetime':'10'}
 
 # sending post request and saving response as response object
-r = requests.post(url = API_ENDPOINT, data = data)
+r = requests.post(url = API_ENDPOINT, data = data, verify=Flase)
 
 # extracting response text
 #pastebin_url = r.text
