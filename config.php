@@ -100,56 +100,66 @@ if($_POST){
 
 //this is the function going to update your ini file
 	function update_ini_file($data, $filepath) {
-		$content = "";
+	        $content = "";
 
-		//parse the ini file to get the sections
-		//parse the ini file using default parse_ini_file() PHP function
-		$parsed_ini = parse_ini_file($filepath, true);
+	        //parse the ini file to get the sections
+	        //parse the ini file using default parse_ini_file() PHP function
+	        $parsed_ini = parse_ini_file($filepath, true);
 
-		foreach($data as $section=>$values){
-			//append the section
-			$content .= "[".$section."]\n";
-			//append the values
-			foreach($values as $key=>$value){
-				$content .= $key."=".$value."\n";
-			}
-		}
+	        foreach($data as $section=>$values){
+		                //append the section
+		                $content .= "[".$section."]\n";
+		                //append the values
+		                foreach($values as $key=>$value){
+		                        $content .= $key."=".$value."\n";
+		                }
+	        }
 
-		//write it into file
-		if (!$handle = fopen($filepath, 'w')) {
-			return false;
-		}
+	        //write it into file
+	        if (!$handle = fopen($filepath, 'w')) {
+		                return false;
+	        }
 
-		$success = fwrite($handle, $content);
-		fclose($handle);
+	        $success = fwrite($handle, $content);
+	        fclose($handle);
 
-		return $success;
+	        return $success;
 	}
 ?>
 <?php
 
 //parse the ini file using default parse_ini_file() PHP function
-$parsed_ini = parse_ini_file($filepath, true);
+//$parsed_ini = parse_ini_file($filepath, true);
+//$ip = ($parsed_ini['IP']);
+//$user = ($parsed_ini['User']);
+//$pass = ($parsed_ini['Pass']);
 
 ?>
 <div class="form">
 <form action="" method="post" class="pads" id="my_form">
 	<?php
-
+        $filepath = 'config.ini';
+        $parsed_ini = parse_ini_file($filepath, true);
 	foreach($parsed_ini as $section=>$values){
-		echo "<h3>$section</h3>";
-		//keep the section as hidden text so we can update once the form submitted
-		echo "<input type='hidden' value='$section' name='$section' />";
-		//print all other values as input fields, so can edit.
-		//note the name='' attribute it has both section and key
-		foreach($values as $key=>$value){
-			echo "<p>".$key.": <input type='text' name='{$section}[$key]' value='$value' />"."</p>";
-		}
-		echo "<br>";
+	        echo "<h3>$section</h3>";
+	        //keep the section as hidden text so we can update once the form submitted
+	        echo "<input type='hidden' value='$section' name='$section' />";
+	        //print all other values as input fields, so can edit.
+	        //note the name='' attribute it has both section and key
+	        //foreach($values as $key=>$value){
+                $parsed_ini2 = parse_ini_file($filepath);
+                $ip = ($parsed_ini2['IP']);
+                $user = ($parsed_ini2['User']);
+                $pass = ($parsed_ini2['Pass']);
+	        echo "<br>";
+                echo "IP: <input type='text' name='{$section}[IP]' value='$ip' />";
+                echo "<p> User: <input type='text' name='{$section}[User]' value='$user' />"."</p>";
+                echo "<p> Pass: <input type='text' name='{$section}[Pass]' value='' />"."</p>";
+               //}
 	}
 
 	?>
-	<input type="submit" value="Update INI" onclick="alert('Configuration IP Changed')">
+	<input type="submit" value="Update INI" onclick="alert('Configuration Updated')">
 </form>
 </div>
 
