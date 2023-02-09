@@ -33,9 +33,11 @@ if LOG_LEVEL == 'DEBUG':
     LOGGER.addHandler(log_console)
 
 HOST = config['Raemis_EPC_System']['IP']
+USER = config['Raemis_EPC_System']['User']
+PASS = config['Raemis_EPC_System']['Pass']
 
 # defining the api-endpoint
-API_ENDPOINT = "http://raemis:password@" + HOST + "/api/smsc_message?id=1"
+API_ENDPOINT = "https://" + USER + ":" + PASS + "@" + HOST + "/api/smsc_message?id=1"
 
 # data to be sent to api
 data = {'to_msisdn':(sys.argv[1]),
@@ -50,7 +52,7 @@ data2 = {'to_msisdn':(sys.argv[1]),
         'msg_lifetime':'10'}
 
 # sending post request and saving response as response object
-r = requests.post(url = API_ENDPOINT, data = data)
+r = requests.post(url = API_ENDPOINT, data = data, verify=False)
 
 # extracting response text
 #pastebin_url = r.text
