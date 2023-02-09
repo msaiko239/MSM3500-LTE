@@ -87,15 +87,6 @@ padding: 0px 0px 0px 10px;
 <div>
 <img src="images/int.png" class="img">
 </div>
-<?php
-$filepath = 'config.ini';
-$parsed_ini = parse_ini_file($filepath, true);
-    foreach($parsed_ini as $section=>$values){
-        foreach($values as $key=>$value){
-        }
-    }
-$ip = $value;
-?>
 <br>
 <form name="myform" method="POST" action="text.php" class="form">
     <p class="formfield">
@@ -106,6 +97,12 @@ $ip = $value;
     <select name='msisdn' value='test' style='width: 200px;'>
     <option value="" disabled selected>Select Staff Ext</option>
         <?php
+        $filepath = 'config.ini';
+        $parsed_ini = parse_ini_file($filepath);
+        $ip = ($parsed_ini['IP']);
+        $user = ($parsed_ini['User']);
+        $pass = ($parsed_ini['Pass']);
+
         $arrContextOptions=array(
             "ssl"=>array(
                 "allow_self_signed"=> true,
@@ -115,7 +112,7 @@ $ip = $value;
         );
         ini_set("display_errors",1);
         error_reporting(E_ALL);
-        $obj = file_get_contents('https://raemis:password@'. $ip . '/api/subscriber', false, stream_context_create($arrContextOptions));
+        $obj = file_get_contents('https://' . $user . ':' . $pass . '@' . $ip . '/api/subscriber', false, stream_context_create($arrContextOptions));
         $colm = (array_column(json_decode($obj), 'msisdn'));
 
         foreach($colm as $item){
