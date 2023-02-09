@@ -48,9 +48,12 @@ Example
 
 The 0 at the end is the type of message 0 meaning text, Druid has more info in their API documentation
 
-#Connecting to Raemis
+# Connecting to Raemis
 on the configure interface you will have to enter you core
+
 IP :
+
 User : (the user for acccessing the API)
+
 Password : (This is the password set in Raemis for the API user. Make sure you have not used the charecters ?{}|&~![()^"
     
