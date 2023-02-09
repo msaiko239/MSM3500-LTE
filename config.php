@@ -144,9 +144,6 @@ if($_POST){
 	        echo "<h3>$section</h3>";
 	        //keep the section as hidden text so we can update once the form submitted
 	        echo "<input type='hidden' value='$section' name='$section' />";
-	        //print all other values as input fields, so can edit.
-	        //note the name='' attribute it has both section and key
-	        //foreach($values as $key=>$value){
                 $parsed_ini2 = parse_ini_file($filepath);
                 $ip = ($parsed_ini2['IP']);
                 $user = ($parsed_ini2['User']);
@@ -154,8 +151,7 @@ if($_POST){
 	        echo "<br>";
                 echo "IP: <input type='text' name='{$section}[IP]' value='$ip' />";
                 echo "<p> User: <input type='text' name='{$section}[User]' value='$user' />"."</p>";
-                echo "<p> Pass: <input type='text' name='{$section}[Pass]' value='' />"."</p>";
-               //}
+                echo "<p> Pass: <input type='text' name='{$section}[Pass]' value='' /> Cannot use ?{}|&~![()^\" "."</p>";
 	}
 
 	?>
