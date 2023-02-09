@@ -53,7 +53,7 @@ on the configure interface you will have to enter you core
 
 IP :
 
-User : (the user for acccessing the API)
+User : the user for acccessing the API
 
-Password : (This is the password set in Raemis for the API user. Make sure you have not used the charecters ?{}|&~![()^"
+Password : This is the password set in Raemis for the API user. Make sure you have not used the charecters ?{}|&~![()^"
     
