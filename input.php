@@ -87,52 +87,16 @@ padding: 0px 0px 0px 10px;
 </div>
 <br>
 </br>
-<div class="form">
+<div>
 <?php
-
-$row = 1;
-if (($handle = fopen("/var/log/axi/input.csv", "r")) !== FALSE) {
-
-    echo '<table border="1">';
-
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        $num = count($data);
-        if ($row == 1) {
-            echo '<thead><tr>';
-        }else{
-            echo '<tr>';
-        }
-
-        for ($c=0; $c < $num; $c++) {
-            //echo $data[$c] . "<br />\n";
-            if(empty($data[$c])) {
-               $value = "&nbsp;";
-            }else{
-               $value = $data[$c];
-            }
-            if ($row == 1) {
-                echo '<th>'.$value.'</th>';
-            }else{
-                echo '<td>'.$value.'</td>';
-            }
-        }
-
-        if ($row == 1) {
-            echo '</tr></thead><tbody>';
-        }else{
-            echo '</tr>';
-        }
-        $row++;
-    }
-
-    echo '</tbody></table>';
-    fclose($handle);
-}
+$myfile = file_get_contents( "/var/log/axi.log" );
+echo "<pre>" . $myfile . "</pre>";
 ?>
+
 </div>
 <br></br>
 
-  <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
+  <div style="position: absolute; left: 10; width: 1000px; text-align:left;">
             Message Server Rev 1.2
   </div>
 </br>
