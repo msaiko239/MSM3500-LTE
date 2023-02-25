@@ -3,7 +3,7 @@
 import re
 import logging
 import logging.handlers
-import configparser
+from configparser import ConfigParser
 import sys
 import asterisk
 import asterisk.agi
@@ -11,52 +11,70 @@ from asterisk.agi import *
 import os
 import sys
 import requests
+import logger_app
+from logger_app import get_logger
 
-config = configparser.ConfigParser()
-config.read('/var/www/html/config.ini')
-LOG_LEVEL = logging.info('LOGGING', 'level')
+def init_config_parser(url):
+    # getting config info from ini
+    config = ConfigParser()
+    config.read(url)
+    host = config.get('Raemis_EPC_System', 'IP')
+    user = config.get('Raemis_EPC_System', 'User')
+    pwd = config.get('Raemis_EPC_System', 'Pass')
+    return config, host, user, pwd
 
-# Initialize logging
-LOGGER = logging.getLogger('axi')
-LOGGER.setLevel(logging.INFO)
-formatter = logging.Formatter('|%(asctime)s|%(levelname)-8s|%(name)s|%(message)s')
-log_file = logging.handlers.TimedRotatingFileHandler('/var/log/axi/input.csv', when='midnight', backupCount=7)
-log_file.setLevel(logging.INFO)
-log_file.setFormatter(formatter)
-LOGGER.addHandler(log_file)
 
-# Only print to console if at DEBUG level
-if LOG_LEVEL == 'DEBUG':
-    log_console = logging.StreamHandler()
-    log_console.setLevel(logging.INFO)
-    log_console.formatter(formatter)
-    LOGGER.addHandler(log_console)
+def get_ast_agi ():
+    agi = AGI()
+    pin = agi.env['agi_extension']
+    msg = agi.env['agi_calleridname']
+    frm = agi.env['agi_callerid']
+    data = {'to_msisdn':pin,
+            'text':msg,
+            'from_msisdn':frm,
+            'msg_lifetime':'100'}
+    return data
 
-HOST = config['Raemis_EPC_System']['IP']
-USER = config['Raemis_EPC_System']['User']
-PASS = config['Raemis_EPC_System']['Pass']
+def init_api_endpoint(user, pwd, host, id_smsc=1):
+    return "https://" + user + ":" + pwd + "@" + host + "/api/smsc_message?id=%d" % (id_smsc)
 
-agi = AGI()
+#def build_data(pin, msg, frm, msg_lifetime = '100'):
+#    data = {'to_msisdn':pin,
+#            'text':msg,
+#            'from_msisdn':frm,
+#            'msg_lifetime':msg_lifetime}
+#    return data
 
-pin = agi.env['agi_extension']
-msg = agi.env['agi_calleridname']
-frm = agi.env['agi_callerid']
+def main():
 
-# defining the api-endpoint
-API_ENDPOINT = "https://" + USER + ":" + PASS + "@" + HOST + "/api/smsc_message?id=1"
+    #TODO
+    my_logger = get_logger(logger_app)
 
-# data to be sent to api
-data = {'to_msisdn':pin,
-        'text':msg,
-        'from_msisdn':frm,
-        'msg_lifetime':'10'}
+    #Init config parser
+    config, host, user, pwd = init_config_parser("/var/www/html/config.ini")
 
-# sending post request and saving response as response object
-r = requests.post(url = API_ENDPOINT, data = data, verify=False)
+    #Defining the api endpoint
+    api_endpoint = init_api_endpoint(user, pwd, host)
 
-# extracting response text
-#pastebin_url = r.text
-if '200' in str(r.status_code):
-    LOGGER.info('%s Page Accepted By Raemis', data)
-else:
-   LOGGER.info('%s Page Not Accepted By Raemis', data)
+    #Build data
+    data = get_ast_agi()
+
+    # sending post request and saving response as response object
+    try:
+        r = requests.post(url = api_endpoint, data = data, verify=False)
+        if '200' in str(r.status_code):
+            disp = '%s Page Accepted By Raemis'
+            my_logger.info(disp, data)
+            msg_id = 'Message ID %s'
+            my_logger.info(msg_id, r.content.decode())
+        else:
+            disp = '%s Page Not Accepted By Raemis'
+            my_logger.warning(disp, data)
+            my_logger.warning(r.content.decode())
+
+    except:
+        con = 'Unable to connect to server %s'
+        my_logger.warning(con, host)
+
+if __name__ == "__main__":
+    main()
