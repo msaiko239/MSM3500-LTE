@@ -127,7 +127,7 @@ padding: 0px 0px 0px 10px;
 </form>
 <br></br>
 
-  <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
+  <div style="position: absolute; bottom: 10; left: 10; width: 1000px; text-align:left;">
             Message Server Rev 1.2
   </div>
 </br>
