@@ -91,7 +91,7 @@ padding: 0px 0px 0px 10px;
 <?php
 $msg = $_POST['msg'];
 $msisdn = $_POST['msisdn'];
-$cmd = escapeshellcmd("sudo python3 /var/www/html/manpage.py '$msisdn' '$msg' '9999' '0'");
+$cmd = escapeshellcmd("sudo python3 /var/lib/asterisk/agi-bin/page.py '$msisdn' '$msg' '9999' '0'");
 $output = shell_exec($cmd);
 echo 'Your message - ' . $msg . ' was sent to user - ' . $msisdn;
 //echo $msisdn;
