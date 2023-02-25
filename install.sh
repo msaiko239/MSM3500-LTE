@@ -46,9 +46,8 @@ sudo cp images/* /var/www/html/images/
 sudo cp agi/*.py /var/lib/asterisk/agi-bin/
 sudo chmod 777 /var/lib/asterisk/agi-bin/*.py
 
-sudo mkdir /var/log/axi
-sudo cp axi/input.csv /var/log/axi/
-sudo chmod 777 /var/log/axi/input.csv
+sudo cp axi.log /var/log/
+sudo chmod 777 /var/log/axi.log
 
 sudo cp -fr asterisk/pjsip.conf /etc/asterisk/pjsip.conf
 sudo cp -fr asterisk/extensions.conf /etc/asterisk/extensions.conf
