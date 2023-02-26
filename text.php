@@ -1,92 +1,143 @@
-<html>
- <head>
-  <title>Message Server</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+
+<body>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+aside {
+  color: #fff;
+  width: 250px;
+  padding-left: 20px;
+  height: 100vh;
+  background-image: linear-gradient(30deg , #0048bd, #44a7fd);
+  border-top-right-radius: 80px;
+  position: absolute;
+  left: 0;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #6495ED;
-  text-align: center;
-  padding: 14px 16px;
+aside a {
+  font-size: 19px;
+  color: #fff;
+  display: block;
+  padding: 12px;
+  padding-left: 30px;
   text-decoration: none;
-  font-size: 17px;
+  -webkit-tap-highlight-color:transparent;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+aside a:hover {
+  color: #3f5efb;
+  background: #fff;
+  outline: none;
+  position: relative;
+  background-color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
-.topnav a.active {
-  background-color: #6495ED;
-  color: white;
+aside a i {
+  margin-right: 5px;
 }
 
-.box {
-   display: flex;
-   align-items:center;
+aside a:hover::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 100%;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 20px 0 0 #fff;
 }
-.padding2
-{
-width:80px;
-height:50px;
-padding: 2px 20px 2px 20px;
-}
-.padding
-{
-width:80px;
-height:80px;
-padding: 2px 20px 2px 20px;
-}
-.img
-{
-    float: right;
-    background-color: #FFFFFF;
-    width:580px;
-    height:380px;
-    padding: 2px 150px 2px 2px;
-}
-.formfield * {
-  vertical-align: top;
 
+aside a:hover::before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: 38px;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -20px 0 0 #fff;
 }
-.banner {
-padding: 16px 0px 0px 10px;
+
+aside p {
+  margin: 0;
+  padding: 40px 0;
 }
-.form {
-padding: 0px 0px 0px 10px;
+
+body {
+  font-family: 'Roboto';
+  width: 100%;
+  height: 100vh;
+  margin: 0;
 }
-.stat {
-    position: absolute;
+bgimage {
+  background-image: url("/images/int.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.social {
+  height: 0;
+}
+
+.social i:before {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  position: fixed;
+  color: #fff;
+  background: #0077B5;
+  padding: 10px;
+  border-radius: 50%;
+  top:5px;
+  right:5px;
 }
 </style>
-</head>
-<body>
+<aside>
+  <p> Menu </p>
+  <a href="index.php">
+    <i class="fa fa-home" aria-hidden="true"></i>
+    Home
+  </a>
+  <a href="config.php">
+    <i class="fa fa-gear" aria-hidden="true"></i>
+    Configure Interface
+  </a>
+  <a href="sendpage.php">
+    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    Send Message
+  </a>
+  <a href="status.php">
+    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+    Service Status
+  </a>
+  <a href="input.php">
+    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+    View Log
+  </a>
+  <a href="service.php">
+    <i class="fa fa-file" aria-hidden="true"></i>
+    Service Output
+  </a>
+</aside>
 
-<div class="topnav">
-  <a href="index.php">Home</a>
-  <a href="config.php">Configure Interface</a>
-  <a class="active" href="sendpage.php">Message Staff</a>
-  <a href="status.php">Service Status</a>
-  <a href="input.php">Log</a>
-  <a href="service.php">Shell output</a>
+<div style="margin-left:15%">
+<div class="w3-container" id="bgimage">
+<br></br>
+<div style="padding-left:16px">
+<img src="images/sendmsg.jpg">
 </div>
-
-<div class="banner">
-<img src="images/srvlog.jpg">
-</div>
-<br>
-</br>
+<br></br>
 <div class="form">
 <?php
 $msg = $_POST['msg'];
@@ -105,11 +156,5 @@ echo 'Your message - ' . $msg . ' was sent to user - ' . $msisdn;
       Click to go Back
     </button>
 </div>
-<br></br>
 
-  <div style="position: absolute; bottom: 10; left: 10; width: 10000px; text-align:left;">
-            Message Server Rev 1.2
-  </div>
-</br>
- </body>
-</html>
+</body>
