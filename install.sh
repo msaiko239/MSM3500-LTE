@@ -60,9 +60,9 @@ sudo cp -fr asterisk/pjsip.conf /etc/asterisk/pjsip.conf
 sudo cp -fr asterisk/extensions.conf /etc/asterisk/extensions.conf
 sudo cp -fr usr/local/lib/python3.8/dist-packages/asterisk/agi.py /usr/local/lib/python3.*/dist-packages/asterisk/
 sudo cp -fr usr/local/* /usr/local/
-sudo cp -fr axi.service /usr/lib/systemd/system/
+sudo cp -fr axi.service /etc/systemd/system/
 
-sudo chmod 644 /lib/systemd/system/axi.service
+sudo chmod 644 /etc/systemd/system/axi.service
 sudo systemctl daemon-reload
 sudo systemctl enable axi.service
 sudo systemctl start axi.service
