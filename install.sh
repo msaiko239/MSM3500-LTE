@@ -19,11 +19,11 @@ sudo make
 sudo make install
 sudo make samples
 sudo make config
-sudo make install-logrotate -y
+sudo make install-logrotate
 sudo systemctl enable asterisk
 sudo systemctl start asterisk
 
-sudo apt-get install rabbitmq-server
+sudo apt-get install rabbitmq-server -y
 sudo systemctl start rabbitmq-server
 sudo systemctl enable rabbitmq-server
 
