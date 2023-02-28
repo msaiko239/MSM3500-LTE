@@ -19,7 +19,7 @@ sudo make
 sudo make install
 sudo make samples
 sudo make config
-sudo make install-logrotate
+sudo make install-logrotate -y
 sudo systemctl enable asterisk
 sudo systemctl start asterisk
 
