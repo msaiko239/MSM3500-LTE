@@ -70,3 +70,5 @@ sudo systemctl start axi.service
 sudo asterisk -rx 'reload'
 
 sudo echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
+
+sudo systemctl restart axi.service
