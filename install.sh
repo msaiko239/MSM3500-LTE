@@ -62,6 +62,11 @@ sudo cp -fr usr/local/lib/python3.8/dist-packages/asterisk/agi.py /usr/local/lib
 sudo cp -fr usr/local/* /usr/local/
 sudo cp -fr axi.service /usr/lib/systemd/system/
 
+sudo chmod 644 /lib/systemd/system/axi.service
+sudo systemctl daemon-reload
+sudo systemctl enable axi.service
+sudo systemctl start axi.service
+
 sudo asterisk -rx 'reload'
 
 sudo echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
