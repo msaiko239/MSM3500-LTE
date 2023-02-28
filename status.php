@@ -10,6 +10,37 @@
 <body>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <style>
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.center {
+  margin: auto;
+  width: 90%;
+  padding: 5px;
+}
+.center2 {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
+.center_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
 aside {
   color: #fff;
   width: 250px;
@@ -73,7 +104,14 @@ aside p {
   margin: 0;
   padding: 40px 0;
 }
-
+fit_img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 100%;
+    max-height: 100%;
+}
 body {
   font-family: 'Roboto';
   width: 100%;
@@ -126,31 +164,83 @@ bgimage {
     Service Output
   </a>
 </aside>
-
 <div style="margin-left:15%">
-<div class="w3-container" id="bgimage">
-
-<div style="padding-left:16px">
 <img src="images/servstat.jpg">
 </div>
-<br></br>
-<div class="stat">
-<?php
 
-$output = shell_exec('systemctl status asterisk.service');
-$needle = "running";
+<div style="margin-left:15%">
+  <div class="column">
+  <br></br>
+    <div class="center">
+    <?php
 
-if (strpos($output, $needle) !==false) {
-  echo '<img src="images/MSMservicerunning.jpg" />';
-  echo '<p>The MSM Service is Running</p>';
-  echo '<a href="/restart.php" /><p> Click Here to Restart </p>';
-  echo '<a href="/stop.php" /><p> Click Here to Stop </p>';
-  echo '<p><a href="/reboot.php" /> Click Here to Reboot</p></a>';
-} else {
-  echo '<a href="/start.php" /><img src="images/MSMservicestopped.jpg"/p>';
-  echo '<p>The MSM Service is Stopped Click the Banner to Start</p>';
-  echo '<a href="/reboot.php" /><p>Click Here to Reboot</p></a>';
-}
-?>
+    $output = shell_exec('systemctl status asterisk.service');
+    $needle = "running";
+
+    if (strpos($output, $needle) !==false) {
+      echo '<h2 class="center2">Asterisk</h2>
+            <div> <img class="center_img" src="images/green_light.png" />
+            <p class="center2">Asterisk is Running</p>
+            <p class="center2">Asterisk is used to process SIP messages</p>
+            <p class="center2"><a href="/restart.php">Click Here to Restart</a></p>
+            <p class="center2"><a href="/stop.php">Click Here to Stop</a></p>
+            <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
+    } else {
+      echo '<div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
+            <p class="center2"><a href="/start.php">Asterisk is Stopped Click to Start</a></p>
+            <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
+    }
+    ?>
+    </div>
+  </div>
+  <div class="column">
+  <br></br>
+    <div class="center">
+    <?php
+
+    $output = shell_exec('systemctl status axi.service');
+    $needle = "running";
+
+    if (strpos($output, $needle) !==false) {
+      echo '<h2 class="center2">AXI Service</h2>
+            <div> <img class="center_img" src="images/green_light.png" />
+            <p class="center2">The AXI Service is Running</p>
+            <p class="center2">The AXI service is used to process the messages and send them to Raemis</p>
+            <p class="center2"><a href="/restart_axi.php">Click Here to Restart</a></p>
+            <p class="center2"><a href="/stop_axi.php">Click Here to Stop</a></p>
+            <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
+    } else {
+      echo '<div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
+            <p class="center2"><a href="/start_axi.php">The AXI Service is Stopped Click to Start</a></p>
+            <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
+    }
+    ?>
+    </div>
+  </div>
+  <div class="column">
+  <br></br>
+    <div class="center">
+    <?php
+
+    $output = shell_exec('systemctl status rabbitmq-server.service');
+    $needle = "running";
+
+    if (strpos($output, $needle) !==false) {
+      echo '<h2 class="center2">Message Queing</h2>
+            <div> <img class="center_img" src="images/green_light.png" />
+            <p class="center2">The Message Queing Server is Running</p>
+            <p class="center2">Message Queing is used to communicate between processes</p>
+            <p class="center2"><a href="/restart_mq.php">Click Here to Restart</a></p>
+            <p class="center2"><a href="/stop_mq.php">Click Here to Stop</a></p>
+            <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
+    } else {
+      echo '<div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
+            <p class="center2"><a href="/start_mq.php">The Message Queing Server is Stopped Click to Start</a></p>
+            <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
+    }
+    ?>
+    </div>
+  </div>
+
 </div>
 </body>
