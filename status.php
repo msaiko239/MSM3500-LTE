@@ -186,7 +186,8 @@ bgimage {
             <p class="center2"><a href="/stop.php">Click Here to Stop</a></p>
             <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
     } else {
-      echo '<div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
+      echo '<h2 class="center2">Asterisk</h2>
+            <div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
             <p class="center2"><a href="/start.php">Asterisk is Stopped Click to Start</a></p>
             <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
     }
@@ -210,7 +211,8 @@ bgimage {
             <p class="center2"><a href="/stop_axi.php">Click Here to Stop</a></p>
             <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
     } else {
-      echo '<div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
+      echo '<h2 class="center2">AXI Service</h2>
+            <div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
             <p class="center2"><a href="/start_axi.php">The AXI Service is Stopped Click to Start</a></p>
             <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
     }
@@ -234,7 +236,8 @@ bgimage {
             <p class="center2"><a href="/stop_mq.php">Click Here to Stop</a></p>
             <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
     } else {
-      echo '<div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
+      echo '<h2 class="center2">Message Queing</h2>
+            <div> <a href="/start.php" /><img class="center_img" src="images/red_light.png"/>
             <p class="center2"><a href="/start_mq.php">The Message Queing Server is Stopped Click to Start</a></p>
             <p class="center2"><a href="/reboot.php">Click Here to Reboot</a></p></div>';
     }
