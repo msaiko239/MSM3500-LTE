@@ -40,11 +40,11 @@ Enter the IP of your Druid Raemis server and hit update ini.
 
 from the cli of your server enter the command
 
-    python3 /var/lib/asterisk/agi-bin/page.py '<phone-you-want-to-send-to>' '<Message-Text>' '<from-number>' '0'
+    python3 /var/lib/asterisk/agi-bin/send.py '<phone-you-want-to-send-to>' '<Message-Text>' '<from-number>' '0'
     
 Example
 
-    python3 /var/lib/asterisk/agi-bin/page.py '1234' 'Hello this is a test' '4321' '0'
+    python3 /var/lib/asterisk/agi-bin/send.py '1234' 'Hello this is a test' '4321' '0'
 
 The 0 at the end is the type of message 0 meaning text, Druid has more info in their API documentation
 
