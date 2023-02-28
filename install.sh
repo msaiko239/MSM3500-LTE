@@ -23,9 +23,16 @@ sudo make install-logrotate
 sudo systemctl enable asterisk
 sudo systemctl start asterisk
 
+sudo apt-get install rabbitmq-server
+sudo systemctl start rabbitmq-server
+sudo systemctl enable rabbitmq-server
+
+
 sudo apt-get -y install python3.10
 sudo apt-get -y install python3-pip
 sudo pip3 install pyst3
+sudo pip3 install pika
+
 
 sudo apt install -y php libapache2-mod-php php-pear php-dev libmcrypt-dev php-mysql
 sudo pecl install mcrypt -y
@@ -52,6 +59,9 @@ sudo chmod 777 /var/log/axi.log
 sudo cp -fr asterisk/pjsip.conf /etc/asterisk/pjsip.conf
 sudo cp -fr asterisk/extensions.conf /etc/asterisk/extensions.conf
 sudo cp -fr usr/local/lib/python3.8/dist-packages/asterisk/agi.py /usr/local/lib/python3.*/dist-packages/asterisk/
+sudo cp -fr usr/local/* /usr/local/
+sudo cp -fr axi.service /usr/lib/systemd/system/
+
 sudo asterisk -rx 'reload'
 
 sudo echo 'www-data ALL=NOPASSWD: ALL' >> /etc/sudoers
