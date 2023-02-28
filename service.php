@@ -132,7 +132,27 @@ body {
 <?php
 
 $output = shell_exec('sudo journalctl -u asterisk.service -n10');
-echo "<pre>$output</pre>";
+echo "<h2>Asterisk Service Output</h2>
+      <pre>$output</pre>";
 ?>
 </div>
+<div class="form">
+<?php
+
+$output = shell_exec('sudo journalctl -u axi.service -n10');
+echo "<h2>AXI Service Output</h2>
+      <pre>$output</pre>";
+
+?>
+</div>
+<div class="form">
+<?php
+
+$output = shell_exec('sudo journalctl -u rabbitmq-server.service -n10');
+echo "<h2>Message Que Service Output</h2>
+      <pre>$output</pre>";
+
+?>
+</div>
+
 </body>
