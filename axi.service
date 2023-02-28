@@ -1,0 +1,12 @@
+[Unit]
+Description=axi service
+After=multi-user.target
+Conflicts=getty@tty.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/page2.py
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
