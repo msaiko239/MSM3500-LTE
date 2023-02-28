@@ -9,6 +9,8 @@ This program utilizes Asterisk for communication and application function, under
 Ubuntu 20.04 or better LTS server
 4GB RAM | 100GB HD | 2 CPU
 
+Git `apt install git`
+
 # Installation 
 
     sudo apt-get update
