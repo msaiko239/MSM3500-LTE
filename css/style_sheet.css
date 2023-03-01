@@ -1,3 +1,33 @@
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.center {
+  margin: auto;
+  width: 90%;
+  padding: 5px;
+}
+.center2 {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
+.center_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
 aside {
   color: #fff;
   width: 250px;
