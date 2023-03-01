@@ -93,11 +93,10 @@
                         $ip = ($parsed_ini2['IP']);
                         $user = ($parsed_ini2['User']);
                         $pass = ($parsed_ini2['Pass']);
-                        echo "<p> IP      :    <input type='text' name='{$section}[IP]' value='$ip' />"."</p>";
-                        echo "<p> User: <input type='text' name='{$section}[User]' value='$user' />"."</p>";
-                        echo "<p> Pass: <input type='text' name='{$section}[Pass]' value='' /> Cannot use ?{}|&~![()^\" "."</p>";
+                        echo "<p> IP      :    <input type='text' name='{$section}[IP]' value='$ip' />"."</p>
+                              <p> User: <input type='text' name='{$section}[User]' value='$user' />"."</p>
+                              <p> Pass: <input type='text' name='{$section}[Pass]' value='' /> Cannot use ?{}|&~![()^\" "."</p>";
 	        }
-
 	        ?>
 	        <input type="submit" value="Update INI" onclick="alert('Configuration Updated')">
           </form>
