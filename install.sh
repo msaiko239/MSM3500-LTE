@@ -49,6 +49,8 @@ sudo chmod 777 /var/www/html/*
 
 sudo mkdir /var/www/html/images
 sudo cp images/* /var/www/html/images/
+sudo mkdir /var/www/html/css
+sudo cp css/* /var/www/html/css/
 
 sudo cp agi/*.py /var/lib/asterisk/agi-bin/
 sudo chmod 777 /var/lib/asterisk/agi-bin/*.py
