@@ -11,7 +11,7 @@
   <body>
     <aside>
       <p> Menu </p>
-      <a href="index.php">
+      <a href="index.html">
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
@@ -32,19 +32,16 @@
         Service Output
       </a>
     </aside>
-    <div style="margin-left:15%">
-      <div class="w3-container" id="bgimage">
-
-        <div style="padding-left:16px">
-          <img src="images/commlog.jpg">
-        </div>
-        <br></br>
-        <div>
-          <?php
-          $myfile = file_get_contents( "/var/log/axi.log" );
-          echo "<pre>" . $myfile . "</pre>";
-          ?>
-        </div>
+    <div class="base">
+      <div style="padding-left:16px">
+        <img src="images/commlog.jpg">
+      </div>
+      <br></br>
+      <div>
+        <?php
+        $myfile = file_get_contents( "/var/log/axi.log" );
+        echo "<pre>" . $myfile . "</pre>";
+        ?>
       </div>
     </div>
   </body>
