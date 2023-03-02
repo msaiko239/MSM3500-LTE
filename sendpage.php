@@ -11,7 +11,7 @@
   <body>
     <aside>
       <p> Menu </p>
-      <a href="index.php">
+      <a href="index.html">
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
@@ -32,51 +32,49 @@
         Service Output
       </a>
     </aside>
-      <div style="margin-left:15%">
-        <div class="w3-container" id="bgimage">
-          <br></br>
-          <div style="padding-left:16px">
-            <img src="images/sendmsg.jpg">
-          </div>
-          <br></br>
-          <form name="myform" method="POST" action="text.php" class="form">
-            <p class="formfield">
-              <label>Message:</label>
-              <textarea type='textarea' id='msg' name='msg'></textarea>
-            </p>
-            <label>Staff Member:</label>
-            <select name='msisdn' value='test' style='width: 200px;'>
-              <option value="" disabled selected>Select Staff Ext</option>
-                  <?php
-                  $filepath = 'config.ini';
-                  $parsed_ini = parse_ini_file($filepath);
-                  $ip = ($parsed_ini['IP']);
-                  $user = ($parsed_ini['User']);
-                  $pass = ($parsed_ini['Pass']);
+      <div class="base">
+        <br></br>
+        <div style="padding-left:16px">
+          <img src="images/sendmsg.jpg">
+        </div>
+        <br></br>
+        <form name="myform" method="POST" action="text.php" class="form">
+          <p class="formfield">
+            <label>Message:</label>
+            <textarea type='textarea' id='msg' name='msg'></textarea>
+          </p>
+          <label>Staff Member:</label>
+          <select name='msisdn' value='test' style='width: 200px;'>
+            <option value="" disabled selected>Select Staff Ext</option>
+                <?php
+                $filepath = 'config.ini';
+                $parsed_ini = parse_ini_file($filepath);
+                $ip = ($parsed_ini['IP']);
+                $user = ($parsed_ini['User']);
+                $pass = ($parsed_ini['Pass']);
 
-                   $arrContextOptions=array(
-                      "ssl"=>array(
-                          "allow_self_signed"=> true,
-                          "verify_peer"=>false,
-                          "verify_peer_name"=>false,
-                      ),
-                  );
-                  ini_set("display_errors",1);
-                  error_reporting(E_ALL);
-                  $obj = file_get_contents('https://' . $user . ':' . $pass . '@' . $ip . '/api/subscriber', false, stream_context_create($arrContextOptions));
-                  $colm = (array_column(json_decode($obj), 'msisdn'));
+                 $arrContextOptions=array(
+                    "ssl"=>array(
+                        "allow_self_signed"=> true,
+                        "verify_peer"=>false,
+                        "verify_peer_name"=>false,
+                    ),
+                );
+                ini_set("display_errors",1);
+                error_reporting(E_ALL);
+                $obj = file_get_contents('https://' . $user . ':' . $pass . '@' . $ip . '/api/subscriber', false, stream_context_create($arrContextOptions));
+                $colm = (array_column(json_decode($obj), 'msisdn'));
 
-                  foreach($colm as $item){
-                          echo "<option id='val' name='val' value='$item'>$item</option>";
-                          echo "<br>";
-                      }
-                  ?>
-            </select>
-            <br>
-            </br>
-              <input type='image' name 'submit' src='images/hNfHB.png' alt='Submit' style='width: 200px;'></input>
-          </form>
-      </div>
+                foreach($colm as $item){
+                        echo "<option id='val' name='val' value='$item'>$item</option>";
+                        echo "<br>";
+                    }
+                ?>
+          </select>
+          <br>
+          </br>
+            <input type='image' name 'submit' src='images/hNfHB.png' alt='Submit' style='width: 200px;'></input>
+        </form>
     </div>
   </body>
 </html>
