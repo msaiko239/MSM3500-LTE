@@ -11,7 +11,7 @@
   <body>
     <aside>
       <p> Menu </p>
-      <a href="index.php">
+      <a href="index.html">
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
@@ -32,39 +32,36 @@
         View Log
       </a>
     </aside>
-    <div style="margin-left:15%">
-      <div class="w3-container" id="bgimage">
+    <div class="div_log">
+      <div style="padding-left:16px">
+      <img src="images/srvlog.jpg">
+      </div>
+      <br></br>
+      <div class="form">
+        <?php
 
-        <div style="padding-left:16px">
-        <img src="images/srvlog.jpg">
-        </div>
-        <br></br>
-        <div class="form">
-          <?php
+        $output = shell_exec('sudo journalctl -u asterisk.service -n10');
+        echo "<h2>Asterisk Service Output</h2>
+              <pre>$output</pre>";
+        ?>
+      </div>
+      <div class="form">
+        <?php
 
-          $output = shell_exec('sudo journalctl -u asterisk.service -n10');
-          echo "<h2>Asterisk Service Output</h2>
-                <pre>$output</pre>";
-          ?>
-        </div>
-        <div class="form">
-          <?php
+        $output = shell_exec('sudo journalctl -u axi.service -n10');
+        echo "<h2>AXI Service Output</h2>
+              <pre>$output</pre>";
 
-          $output = shell_exec('sudo journalctl -u axi.service -n10');
-          echo "<h2>AXI Service Output</h2>
-                <pre>$output</pre>";
+        ?>
+      </div>
+      <div class="form">
+        <?php
 
-          ?>
-        </div>
-        <div class="form">
-          <?php
+        $output = shell_exec('sudo journalctl -u rabbitmq-server.service -n10');
+        echo "<h2>Message Que Service Output</h2>
+              <pre>$output</pre>";
 
-          $output = shell_exec('sudo journalctl -u rabbitmq-server.service -n10');
-          echo "<h2>Message Que Service Output</h2>
-                <pre>$output</pre>";
-
-          ?>
-        </div>
+        ?>
       </div>
     </div>
   </body>
