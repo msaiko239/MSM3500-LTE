@@ -11,7 +11,7 @@
   <body>
     <aside>
       <p> Menu </p>
-      <a href="index.php">
+      <a href="index.html">
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
@@ -32,75 +32,74 @@
         Service Output
       </a>
     </aside>
-    <div style="margin-left:15%">
-      <div class="w3-container" id="bgimage">
-        <div style="padding-left:16px">
-        <img src="images/Raemisip.jpg">
-        </div>
-        <br>
-        </br>
-        <?php
+    <div class="base">
+      <div style="padding-left:16px">
+      <img src="images/Raemisip.jpg">
+      </div>
+      <br>
+      </br>
+      <?php
 
-        //put the file path here
-       $filepath = 'config.ini';
+      //put the file path here
+     $filepath = 'config.ini';
 
-        //after the form submit
+      //after the form submit
 
-        if($_POST){
-	        $data = $_POST;
-	        //update ini file, call function
-	        update_ini_file($data, $filepath);
-        }
+      if($_POST){
+              $data = $_POST;
+	      //update ini file, call function
+	      update_ini_file($data, $filepath);
+      }
 
-        //this is the function going to update your ini file
-	        function update_ini_file($data, $filepath) {
-	                $content = "";
+      //this is the function going to update your ini file
+	      function update_ini_file($data, $filepath) {
+	              $content = "";
 
-	                //parse the ini file to get the sections
-	                //parse the ini file using default parse_ini_file() PHP function
-	                $parsed_ini = parse_ini_file($filepath, true);
+	              //parse the ini file to get the sections
+	              //parse the ini file using default parse_ini_file() PHP function
+	              $parsed_ini = parse_ini_file($filepath, true);
 
-        	        foreach($data as $section=>$values){
-	                                //append the section
-	                                $content .= "[".$section."]\n";
-	                                //append the values
-	                                foreach($values as $key=>$value){
-	                                        $content .= $key."=".$value."\n";
-	                                }
-	                }
+        	      foreach($data as $section=>$values){
+	                              //append the section
+	                              $content .= "[".$section."]\n";
+	                              //append the values
+	                              foreach($values as $key=>$value){
+	                                      $content .= $key."=".$value."\n";
+	                              }
+	              }
 
-        	        //write it into file
-	                if (!$handle = fopen($filepath, 'w')) {
-	                                return false;
-	                }
+       //write it into file
+	              if (!$handle = fopen($filepath, 'w')) {
+	                              return false;
+	              }
 
-	                $success = fwrite($handle, $content);
-	                fclose($handle);
+	              $success = fwrite($handle, $content);
+	              fclose($handle);
 
-        	        return $success;
-	        }
-        ?>
-        <div class="form">
-          <form action="" method="post" class="pads" id="my_form">
-	        <?php
-                $filepath = 'config.ini';
-                $parsed_ini = parse_ini_file($filepath, true);
-	        foreach($parsed_ini as $section=>$values){
-	                echo "<h3>$section</h3>";
-	                //keep the section as hidden text so we can update once the form submitted
-	                echo "<input type='hidden' value='$section' name='$section' />";
-                        $parsed_ini2 = parse_ini_file($filepath);
-                        $ip = ($parsed_ini2['IP']);
-                        $user = ($parsed_ini2['User']);
-                        $pass = ($parsed_ini2['Pass']);
-                        echo "<p> IP      :    <input type='text' name='{$section}[IP]' value='$ip' />"."</p>
-                              <p> User: <input type='text' name='{$section}[User]' value='$user' />"."</p>
-                              <p> Pass: <input type='text' name='{$section}[Pass]' value='' /> Cannot use ?{}|&~![()^\" "."</p>";
-	        }
-	        ?>
-	        <input type="submit" value="Update INI" onclick="alert('Configuration Updated')">
-          </form>
-        </div>
+        	      return $success;
+	      }
+      ?>
+      <div class="form">
+        <form action="" method="post" class="pads" id="my_form">
+	      <?php
+              $filepath = 'config.ini';
+              $parsed_ini = parse_ini_file($filepath, true);
+	      foreach($parsed_ini as $section=>$values){
+	              echo "<h3>$section</h3>";
+	              //keep the section as hidden text so we can update once the form submitted
+	              echo "<input type='hidden' value='$section' name='$section' />";
+                      $parsed_ini2 = parse_ini_file($filepath);
+                      $ip = ($parsed_ini2['IP']);
+                      $user = ($parsed_ini2['User']);
+                      $pass = ($parsed_ini2['Pass']);
+                      echo "<p> IP      :    <input type='text' name='{$section}[IP]' value='$ip' />"."</p>
+                            <p> User: <input type='text' name='{$section}[User]' value='$user' />"."</p>
+                            <p> Pass: <input type='text' name='{$section}[Pass]' value='' /> Cannot use ?{}|&~![()^\" "."</p>";
+	      }
+
+	      ?>
+	      <input type="submit" value="Update INI" onclick="alert('Configuration Updated')">
+        </form>
       </div>
     </div>
   </body>
