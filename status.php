@@ -11,7 +11,7 @@
   <body>
     <aside>
       <p> Menu </p>
-      <a href="index.php">
+      <a href="index.html">
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
@@ -32,11 +32,11 @@
         Service Output
       </a>
     </aside>
-    <div style="margin-left:15%">
+    <div class="base">
       <img src="images/servstat.jpg">
     </div>
-
-    <div style="margin-left:15%">
+    <br></br>
+    <div class="base">
       <div class="column">
         <br></br>
         <div class="center">
