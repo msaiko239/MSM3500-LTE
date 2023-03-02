@@ -32,7 +32,7 @@
         Service Output
       </a>
     </aside>
-    <div class="base">
+    <div class="div_log">
       <div style="padding-left:16px">
         <img src="images/commlog.jpg">
       </div>
