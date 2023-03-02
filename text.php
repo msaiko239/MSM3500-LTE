@@ -11,7 +11,7 @@
   <body>
     <aside>
       <p> Menu </p>
-      <a href="index.php">
+      <a href="index.html">
         <i class="fa fa-home" aria-hidden="true"></i>
         Home
       </a>
@@ -32,28 +32,26 @@
         Service Output
       </a>
     </aside>
-    <div style="margin-left:15%">
-      <div class="w3-container" id="bgimage">
-        <br></br>
-        <div style="padding-left:16px">
-          <img src="images/sendmsg.jpg">
-        </div>
-        <br></br>
-        <div class="form">
-          <?php
-          $msg = $_POST['msg'];
-          $msisdn = $_POST['msisdn'];
-          $cmd = escapeshellcmd("sudo python3 /var/lib/asterisk/agi-bin/send.py '$msisdn' '$msg' '9999' '0'");
-          $output = shell_exec($cmd);
-          echo 'Your message - ' . $msg . ' was sent to user - ' . $msisdn;
-          ?>
-        </div>
-        <br></br>
-        <div class="form">
-          <button onclick="window.location.href='sendpage.php';">
-            Click to go Back
-          </button>
-        </div>
+    <div class="base">
+      <br></br>
+      <div style="padding-left:16px">
+        <img src="images/sendmsg.jpg">
+      </div>
+      <br></br>
+      <div class="form">
+        <?php
+        $msg = $_POST['msg'];
+        $msisdn = $_POST['msisdn'];
+        $cmd = escapeshellcmd("sudo python3 /var/lib/asterisk/agi-bin/send.py '$msisdn' '$msg' '9999' '0'");
+        $output = shell_exec($cmd);
+        echo 'Your message - ' . $msg . ' was sent to user - ' . $msisdn;
+        ?>
+      </div>
+      <br></br>
+      <div class="form">
+        <button onclick="window.location.href='sendpage.php';">
+          Click to go Back
+        </button>
       </div>
     </div>
   </body>
