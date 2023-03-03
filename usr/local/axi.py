@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #importing the requests library
 import requests
 from configparser import ConfigParser
@@ -11,6 +10,7 @@ import json
 import logger_app
 from logger_app import get_logger
 import logging
+import time
 
 def init_config_parser(url):
     # getting config info from ini
@@ -25,6 +25,18 @@ def init_config_parser(url):
 def init_api_endpoint(user, pwd, host, id_smsc=1):
     return "https://" + user + ":" + pwd + "@" + host + "/api/smsc_message?id=%d" % (id_smsc)
 
+
+def build_data(input_data, msg_lifetime = '100', msg_type = '0'):
+    # data to be sent to api
+    try:
+        data = {'to_msisdn':input_data['msisdn'],
+                'text':input_data['msg'],
+                'msg_lifetime':msg_lifetime,
+                'from_msisdn':input_data['frm'],
+                'msg_type':msg_type}
+    except KeyError:
+        return None
+    return data
 
 
 def main():
@@ -46,30 +58,27 @@ def main():
     def callback(ch, method, properties, body):
         data2 = body.decode()
         res = json.loads(data2)
-        print(" [x] Received %r" % data2)
+        data = build_data(res)
 
-        def build_data(msg_lifetime = '100', msg_type = '0'):
-            # data to be sent to api
-            data = {'to_msisdn':res['msisdn'],
-                    'text':res['msg'],
-                    'msg_lifetime':msg_lifetime,
-                    'from_msisdn':res['frm'],
-                    'msg_type':msg_type}
-            return data
-
-        data = build_data()
     # sending post request and saving response as response object
         try:
             r = requests.post(url = api_endpoint, data = data, verify=False)
             if '200' in str(r.status_code):
+                print (r.status_code)
                 disp = '%s Page Accepted By Raemis'
                 my_logger.info(disp, data)
                 msg_id = 'Message ID %s'
                 my_logger.info(msg_id, r.content.decode())
             else:
                 disp = '%s Page Not Accepted By Raemis'
-                my_logger.warning(disp, data)
-                my_logger.warning(r.content.decode())
+                if '429' in str(r.status_code):
+                    bad_req = '%s Too Many Requests to Raemis Page not accepted'
+                    my_logger.warning(bad_req, data)
+                    time.sleep(.5)
+                    #r = requests.post(url = api_endpoint, data = data, verify=False)
+                else:
+                    my_logger.warning(disp, data)
+                    my_logger.warning(r.content.decode())
 
         except:
             con = 'Unable to connect to server %s'
