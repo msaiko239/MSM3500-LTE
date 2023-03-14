@@ -50,6 +50,12 @@ Example
 
 The 0 at the end is the type of message 0 meaning text, Druid has more info in their API documentation
 
+You can also run a load test to see how many messages each system can handle before a failure. 
+    
+    python3 /var/lib/asterisk/agi-bin/loadtest.py '1234' '4321' '0'
+
+'1234' is reciever '4321' is the sender address and '0' is the message type
+
 # Connecting to Raemis
 on the configure interface you will have to enter you core
 
