@@ -21,7 +21,7 @@ Git `apt install git`
 
     cd /tmp/MSM3500-LTE
     
-    sudo chmod 777 install.sh
+    sudo chmod a+x install.sh
 
     sudo ./install.sh
 
