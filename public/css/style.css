@@ -1,0 +1,55 @@
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background: #1d1f21;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sidebar-title {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px 0;
+    color: #ddd;
+    text-decoration: none;
+}
+
+.sidebar-link:hover {
+    color: #fff;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.welcome-container img {
+    max-width: 600px;
+}
+
+.img-system {
+    max-width: 500px;
+}
+.log-output {
+    background: #111;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 70vh;
+    overflow-y: auto;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+}
+

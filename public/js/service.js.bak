@@ -1,0 +1,37 @@
+async function fetchServiceStatus(name) {
+    const res = await fetch(`/api/service/${name}`);
+
+    if (!res.ok) {
+        return { success: false, running: false, output: "Service check failed" };
+    }
+
+    return await res.json();
+}
+
+async function loadServices() {
+    const services = ["asterisk", "axi", "rabbitmq-server"];
+
+    for (const svc of services) {
+        const result = await fetchServiceStatus(svc);
+
+        // Determine running state
+        result.running = result.output && result.output.includes("active (running)");
+
+        // Update status circle
+        const statusEl = document.getElementById(`${svc}-status`);
+        if (statusEl) {
+            statusEl.innerHTML = result.running
+                ? `<i class="fa-solid fa-circle-check text-success"></i>`
+                : `<i class="fa-solid fa-circle-xmark text-danger"></i>`;
+        }
+
+        // Update log text
+        const logEl = document.getElementById(`${svc}-output`);
+        if (logEl) {
+            logEl.innerHTML = `<pre>${result.output || "No output"}</pre>`;
+        }
+    }
+}
+
+loadServices();
+

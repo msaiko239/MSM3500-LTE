@@ -1,0 +1,14 @@
+[Unit]
+Description=AXI Messaging Service
+After=network.target rabbitmq-server.service
+
+[Service]
+WorkingDirectory=/usr/local/
+ExecStart=/usr/bin/python3 /usr/local/axi.py
+Restart=always
+User=
+Group=
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
