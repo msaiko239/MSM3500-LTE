@@ -123,7 +123,7 @@ MSM3500/
 ## 🚀 Installation
 
 ```
-git clone https://github.com/<your-user>/<your-repo>.git
+git clone https://github.com/msaiko239/MSM3500-LTE.git
 
 cd MSM3500
 
