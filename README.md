@@ -1,6 +1,6 @@
-📡 MSM3500 – Unified Messaging & System Management Interface
+# 📡 MSM3500 – Unified Messaging & System Management Interface
 
-MSM3500 is a modernized web interface that integrates:
+## MSM3500 is a modernized web interface that integrates:
 
 A Node.js backend API
 
@@ -22,7 +22,7 @@ Real-time subscriber lookup + paging system
 
 This project replaces the legacy PHP interface with a modern, component-based, service-oriented architecture.
 
-✨ Features
+## ✨ Features
 ✔ Modern Web UI
 
 Fully redesigned with Bootstrap 5
@@ -83,7 +83,8 @@ Configures NGINX reverse proxy
 
 Sets up systemd services (msm3500.service, axi.service)
 
-🗂 Project Structure
+## 🗂 Project Structure
+```
 MSM3500/
 │
 ├── public/               # Frontend HTML/CSS/JS
@@ -117,15 +118,17 @@ MSM3500/
 │
 ├── install.sh            # Full installer script
 └── README.md
+```
 
-🚀 Installation
-1. Clone the repository
+## 🚀 Installation
+
+```
 git clone https://github.com/<your-user>/<your-repo>.git
+
 cd MSM3500
 
-2. Run the automated installer
 sudo bash install.sh
-
+```
 
 This will install:
 
@@ -143,11 +146,11 @@ MSM3500 web UI
 
 All systemd services
 
-🌐 Access the UI
+33 🌐 Access the UI
 
 Once installation completes:
 
-http://<server-ip>/
+`http://<server-ip>/`
 
 🛠 API Endpoints
 Endpoint	Description
@@ -158,7 +161,8 @@ GET /api/subscribers	Pull staff list from Raemis EPC
 POST /api/page	Send message
 GET /api/service/:name	Check systemd service status
 GET /api/logs	Retrieve logs
-📧 Sending Messages (Paging)
+
+## 📧 Sending Messages (Paging)
 
 The Node API posts messages to the Python AXI worker, which:
 
@@ -166,13 +170,11 @@ Reads config from config.ini
 
 Connects to Raemis EPC
 
-Submits /api/smsc_message
-
 Logs results to /var/log/axi.log
 
 Runs continuously as a systemd service
 
-🔧 Systemd Services
+## 🔧 Systemd Services
 Service	Purpose
 msm3500.service	Node.js backend
 axi.service	Python AXI worker
@@ -180,20 +182,21 @@ asterisk.service	PJSIP + AGI paging
 rabbitmq-server.service	Message queue
 
 To check status:
-
+```
 systemctl status msm3500
 systemctl status axi
 systemctl status asterisk
 systemctl status rabbitmq-server
+```
 
-📨 Sending a Test Page (Manual CLI Test)
+## 📨 Sending a Test Page (Manual CLI Test)
 
 To verify the system can communicate with your Raemis core, run:
 
-python3 /var/lib/asterisk/agi-bin/send.py '<to-number>' '<message-text>' '<from-number>' '0'
+`python3 /var/lib/asterisk/agi-bin/send.py '<to-number>' '<message-text>' '<from-number>' '0'`
 
 Example:
-python3 /var/lib/asterisk/agi-bin/send.py '1234' 'Hello this is a test' '4321' '0'
+`python3 /var/lib/asterisk/agi-bin/send.py '1234' 'Hello this is a test' '4321' '0'`
 
 
 1234 → MSISDN receiving the message
@@ -207,16 +210,16 @@ Hello this is a test → Message text
 0 means text.
 Raemis supports more message types — see their API documentation.
 
-📈 Load Testing Messaging Throughput
+## 📈 Load Testing Messaging Throughput
 
 A load test script is included:
 
-python3 /var/lib/asterisk/agi-bin/loadtest.py '1234' '4321' '0'
+`python3 /var/lib/asterisk/agi-bin/loadtest.py '1234' '4321' '0'`
 
 
 This sends repeated messages to measure Raemis paging performance.
 
-🔌 Connecting to Raemis
+## 🔌 Connecting to Raemis
 
 Inside the web UI at Configure Interface, enter:
 
@@ -235,7 +238,7 @@ AXI processing
 
 UI configuration
 
-🔐 Security Notes
+## 🔐 Security Notes
 
 Asterisk runs as its own non-root user
 
@@ -247,7 +250,7 @@ NGINX handles public access; Node is private on port 3000
 
 Config file permissions are limited
 
-🧩 Future Enhancements
+## 🧩 Future Enhancements
 
 Docker deployment option
 
@@ -257,12 +260,12 @@ Authentication for the UI
 
 Live WebSocket service status
 
-🤝 Contributing
+## 🤝 Contributing
 
 Pull requests are welcome.
 Please open an issue before submitting major architecture changes.
 
-📜 License
+## 📜 License
 
 MIT License
 © 2024–2025 MSM3500
