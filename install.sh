@@ -89,6 +89,7 @@ mkdir -p $INSTALL_DIR
 echo "Copying MSM3500 files..."
 cp -r public $INSTALL_DIR/
 cp -r routes $INSTALL_DIR/
+cp -r lib $INSTALL_DIR/
 cp server.js $INSTALL_DIR/
 cp package.json package-lock.json $INSTALL_DIR/
 cp config.ini $INSTALL_DIR/
@@ -133,7 +134,7 @@ server {
     index index.html;
 
     location /api/ {
-        proxy_pass http://localhost:3000/;
+        proxy_pass http://localhost:3000/api/;
     }
 }
 EOF
