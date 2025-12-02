@@ -6,8 +6,7 @@ import os
 import asterisk
 import asterisk.agi
 from asterisk.agi import *
-import re
-
+import json
 
 def get_ast_agi():
     agi = AGI()
@@ -18,11 +17,17 @@ def get_ast_agi():
 
 def main():
 
-    #Defining variables from Asterisk AGI
     pin, msg, frm = get_ast_agi()
 
-    #creating the body to be sent for MQ
-    bdy = '{"msisdn":%s, "msg":"%s", "frm":%s}' % (pin, msg, frm)
+    # Build a safe JSON dictionary
+    payload = {
+        "msisdn": pin,
+        "msg": msg,
+        "frm": frm   # this will be a string safely encoded
+    }
+
+    # Convert to JSON safely
+    bdy = json.dumps(payload)
 
     connection = pika.BlockingConnection(
         pika.ConnectionParameters(host='localhost'))
