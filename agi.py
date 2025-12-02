@@ -22,8 +22,10 @@ pyvr
 import sys
 import pprint
 import re
-from types import ListType
+#import types is outdated
+#from types import ListType
 import signal
+ListType = list
 
 DEFAULT_TIMEOUT = 2000  # 2sec timeout used as default for functions that take timeouts
 DEFAULT_RECORD = 20000  # 20sec record time
