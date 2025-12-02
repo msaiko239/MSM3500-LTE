@@ -77,7 +77,7 @@ apt-get install rabbitmq-server -y
 systemctl enable rabbitmq-server
 systemctl start rabbitmq-server
 
-pip3 install pika requests pyst3 pycurl
+pip3 install pika requests pyst3 pycurl --break-system-packages
 
 # ------------------------------
 # 6. INSTALL MSM3500 APPLICATION
@@ -103,7 +103,8 @@ cp logger_app.py /usr/local/
 
 # AGI scripts
 cp agi/*.py /var/lib/asterisk/agi-bin/
-chmod 777 /var/lib/asterisk/agi-bin/*.py
+chmod -R 777 /var/lib/asterisk/
+chmod +x /var/lib/asterisk/agi-bin/*.py
 
 # Log file
 cp axi.log /var/log/
