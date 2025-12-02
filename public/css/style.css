@@ -6,6 +6,8 @@ body {
 
 /* Sidebar */
 .sidebar {
+    position: sticky;
+    top: 0;
     width: 230px;
     background: #1d1f21;
     color: #fff;

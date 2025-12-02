@@ -169,6 +169,7 @@ Environment=NODE_ENV=production
 WantedBy=multi-user.target
 EOF
 
+echo 'asterisk ALL=NOPASSWD: /bin/systemctl' >> /etc/sudoers
 systemctl daemon-reload
 systemctl enable msm3500.service
 systemctl restart msm3500.service
